@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import LoginHeader from "./component/LoginHeader";
+import { Routes, Route } from "react-router-dom";
+import Sign from "./component/Sign";
+import { useSelector } from "react-redux";
+import Registration from './component/Registration';
 
-function App() {
+const App = () => {
+  const data = useSelector((state)=>{
+    return state.user
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+  
+  {data.isLogin ? 
+    <Routes>
+      <Route path="/" element={<Sign/>} />
+      <Route path="/signUp" element={<Registration/>}/>
+    </Routes>
+  :
+  <Routes>
+  <Route path="/" element={<LoginHeader/>} />
+  
+  {/* <Route path="/" element = {<Login />} /> */}
+
+  
+  </Routes>}
+  </>
+  )
+};
 
 export default App;
