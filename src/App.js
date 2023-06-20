@@ -3,31 +3,29 @@ import LoginHeader from "./component/LoginHeader";
 import { Routes, Route } from "react-router-dom";
 import Sign from "./component/Sign";
 import { useSelector } from "react-redux";
-import Registration from './component/Registration';
+import Registration from "./component/Registration";
 
 const App = () => {
-  const data = useSelector((state)=>{
-    return state.user
-  })
+  const data = useSelector((state) => {
+    return state.user;
+  });
 
   return (
     <>
-  
-  {data.isLogin ? 
-    <Routes>
-      <Route path="/" element={<Sign/>} />
-      <Route path="/signUp" element={<Registration/>}/>
-    </Routes>
-  :
-  <Routes>
-  <Route path="/" element={<LoginHeader/>} />
-  
-  {/* <Route path="/" element = {<Login />} /> */}
+      {data.isLogin ? (
+        <Routes>
+          <Route path="/" element={<Sign />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/" element={<LoginHeader />} />
+          <Route path="/SignUp" element={<Registration />} />
 
-  
-  </Routes>}
-  </>
-  )
+          {/* <Routes path="/" element = {<Login />} /> */}
+        </Routes>
+      )}
+    </>
+  );
 };
 
 export default App;

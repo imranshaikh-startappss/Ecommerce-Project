@@ -2,7 +2,8 @@ import React from 'react'
 import {useDispatch} from 'react-redux'
 import { useFormik } from 'formik'
 import { LoginSchema } from './Yup'
-import { login } from '../Store/Slices/Slice'
+import { login } from './store/slices/Slice'
+import { Link } from 'react-router-dom'
 // import { useNavigate } from 'react-router'
 
 const initialValues = {
@@ -14,7 +15,7 @@ const Login = () => {
     const dispatch=useDispatch()
     
 
-    const { values, handleBlur, touched, handleSubmit, handleReset ,  handleChange, errors } = useFormik({
+    const { values, handleBlur, touched, handleSubmit, handleReset , handleChange, errors } = useFormik({
         initialValues: initialValues,
         validationSchema: LoginSchema,
         
@@ -57,7 +58,7 @@ const Login = () => {
                     <span>Forgot Password?</span>
                 </div>
                 <button type="submit" className='block bg-blue-700 hover:bg-blue-800 text-white w-full py-2 px rounded '>Sign In </button>
-                <div className='mt-4 text-center'>Don't have an account yet? <span className='text-blue-700 cursor-pointer'>Sing up</span></div>
+                <div className='mt-4 text-center'>Don't have an account yet? <Link to="/signUp" className='text-blue-700 cursor-pointer'>Sign up</Link></div>
 
 
 

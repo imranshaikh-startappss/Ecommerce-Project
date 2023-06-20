@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { GlobalStyle } from "../Styles/globalStyles";
 import { useFormik } from "formik";
 import { signUpSchema } from "../schemas/";
+import { Link } from "react-router-dom";
 
 const initialValues = {
   name: "",
@@ -124,7 +125,7 @@ const Registration = () => {
                   </div>
                 </form>
                 <p className="sign-up">
-                  Already have an account? <a href="#">Sign In now</a>
+                  Already have an account? <Link to="/" href="#">Sign In now</Link>
                 </p>
               </div>
               <div className="modal-right">
