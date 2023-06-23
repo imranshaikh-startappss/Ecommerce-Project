@@ -10,6 +10,7 @@ const App = () => {
     return state.user;
   });
 
+  console.log("getting  data from redux:",data)
   return (
     <>
       {data.isLogin ? (
