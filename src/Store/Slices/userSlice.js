@@ -1,19 +1,15 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+// import { createSlice } from "@reduxjs/toolkit";
 
 
-const addUser = createAsyncThunk("Adding User", {
-    
-})
 
-const UserSlice = createSlice({
-  name: "users",
-  initialState: [],
-  reducers: {
-    addUser(state, action) {
-      console.log("addUserSlice");
-    },
-  },
-});
-// Action creators are generated for each case reducer function
+//   const UserSlice = createSlice({
+//   name: "users",
+//   initialState: [],
+//   reducers: {
 
-export default UserSlice.reducers
+
+//   },
+
+// });
+
+// export default UserSlice.reducers

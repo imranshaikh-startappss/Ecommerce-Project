@@ -18,17 +18,21 @@ const Registration = () => {
       initialValues,
       validationSchema: signUpSchema,
       onSubmit: (values, action) => {
+      if(values ){
         console.log(
           "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
           values
         );
-        action.resetForm();
+        action.resetForm();}
+        else{
+          console.log(
+            "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
+            errors
+          );
+        }
       },
     });
-  console.log(
-    "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
-    errors
-  );
+ 
 
   return (
     <>

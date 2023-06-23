@@ -1,8 +1,8 @@
 import React from 'react'
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useFormik } from 'formik'
 import { LoginSchema } from './Yup'
-import { login } from './store/slices/Slice'
+import { login } from '../Store/Slices/Slice'
 import { Link } from 'react-router-dom'
 // import { useNavigate } from 'react-router'
 
@@ -12,26 +12,30 @@ const initialValues = {
 
 }
 const Login = () => {
-    const dispatch=useDispatch()
-    
+    const dispatch = useDispatch()
 
-    const { values, handleBlur, touched, handleSubmit, handleReset , handleChange, errors } = useFormik({
-        initialValues: initialValues,
+
+    const { values, handleBlur, touched, handleSubmit, handleChange, errors } = useFormik({
+        initialValues,
         validationSchema: LoginSchema,
-        
 
-        onSubmit: (values) => {
-            console.log(values)
-            // dispatch(singUpUser({email,password}))
-            
-            dispatch(login({email: values.email, password: values.password}))
-            handleReset()
+
+        onSubmit: (values, action) => {
+            if (values) {
+                // console.log(values)
+                // dispatch(singUpUser({email,password}))
+
+                dispatch(login(values))
+                action.resetForm()
+            } else {
+                console.log(errors)
+            }
         }
 
     })
     // console.log(errors)
 
-    
+
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -45,10 +49,10 @@ const Login = () => {
                 </div>
                 <div className='mb-3'>
                     <label className='font-meduim mb-2 flex'>Password</label>
-                    <input type='password' name='password' value={values.password} autoComplete='off' placeholder='Enter your password' className='w-full border rounded-md bg-transparent border-gray-400 p-3  '
+                    <input type='text' name='password' value={values.password} autoComplete='off' placeholder='Enter your password' className='w-full border rounded-md bg-transparent border-gray-400 p-3  '
                         onChange={handleChange} onBlur={handleBlur}
                     />
-                    {errors.email && touched.email ? (<p className='form-password'>{errors.password}</p>) : null}
+                    {errors.password && touched.password ? (<p className='form-password'>{errors.password}</p>) : null}
                 </div>
                 <div className='flex justify-between mb-6'>
                     <label>
