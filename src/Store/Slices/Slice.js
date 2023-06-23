@@ -17,6 +17,21 @@ export const login = createAsyncThunk("Login", async (data, { rejectWithValue })
     }
 })
 
+// export const getUser = createAsyncThunk("Adding User", async(data, {rejectWithValue})=>{
+//     const response = await instance.post("/users",data)
+//       try {
+//         console.log(response)
+//         return response.data
+  
+//       } catch (error) {
+//         console.log(error)
+//         return rejectWithValue(error.response)
+//       }
+//   })
+
+
+
+
 
 const initialState = {
     email: "",

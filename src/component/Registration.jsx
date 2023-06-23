@@ -4,8 +4,10 @@ import { GlobalStyle } from "../Styles/globalStyles";
 import { useFormik } from "formik";
 import { signUpSchema } from "../schemas/";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../Store/Slices/userSlice";
 
-const initialValues = {
+const userDetails = {
   name: "",
   email: "",
   password: "",
@@ -13,26 +15,29 @@ const initialValues = {
 };
 
 const Registration = () => {
+
+  const dispatch = useDispatch()
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
-      initialValues,
+      initialValues: userDetails,
       validationSchema: signUpSchema,
       onSubmit: (values, action) => {
-      if(values ){
-        console.log(
-          "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
-          values
-        );
-        action.resetForm();}
-        else{
+        if(values){
           console.log(
-            "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
-            errors
-          );
-        }
-      },
-    });
- 
+            "🚀 ~ file: Registration.jsx ~ line 11 ~ Registration ~ values",
+            values
+            );
+            dispatch(addUser(values))
+            action.resetForm();
+          }else{
+            console.log(
+              "🚀 ~ file: Registration.jsx ~ line 25 ~ Registration ~ errors",
+              errors
+              );
+              
+            }
+          },
+        });
 
   return (
     <>
