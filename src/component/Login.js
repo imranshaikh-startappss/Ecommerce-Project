@@ -2,7 +2,7 @@ import React from 'react'
 import {useDispatch} from 'react-redux'
 import { useFormik } from 'formik'
 import { LoginSchema } from './Yup'
-import { login } from './store/slices/Slice'
+import { login } from '../Store/Slices/Slice'
 import { Link } from 'react-router-dom'
 // import { useNavigate } from 'react-router'
 
